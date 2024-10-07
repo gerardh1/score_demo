@@ -80,7 +80,9 @@
         };
           function myFunction() {
             var queryString = window.location.search;
+              console.log(queryString);
             var urlParams = new URL(queryString);
+             console.log(urlParams);
             var user = urlParams.searchParams.get('User')
               console.log(user);
             if (user=="admin"){
