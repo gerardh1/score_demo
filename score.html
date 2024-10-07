@@ -79,9 +79,9 @@
             2: 0
         };
           function myFunction(indicator) {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const user = urlParams.get('User')
+            var queryString = window.location.search;
+            var urlParams = new URL(queryString);
+            var user = urlParams.searchParams.get('User')
             if (user=="admin"){
                 document.getElementById("redAdd").disabled = false;
                 document.getElementById("redReduce").disabled = false;
