@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body >
+<body onload="myFunction()" >
     <div style="color:white"><h1>紅白大賽計分系統</h1></div>
     &nbsp;<br/>
     &nbsp;<br/>
@@ -55,18 +55,18 @@
     <div class="group" style="background-color: red;">
         <h2>紅組</h2>
         <div id="score1">分數: 0</div>
-        <button onclick="changeScore(1, 1)">增加分數</button>
-        <button onclick="changeScore(1, -1)">減少分數</button>
-        <button onclick="resetScore(1)">重置分數</button>
+         <button id="redAdd" onclick="changeScore(1, 1)" >增加分數</button>
+        <button id="redReduce"onclick="changeScore(1, -1)">減少分數</button>
+        <button id="redReset" onclick="resetScore(1)">重置分數</button>
     </div>
     </td>
     <td>
     <div class="group" style="background-color: white;">
         <h2>白組</h2>
         <div id="score2">分數: 0</div>
-        <button onclick="changeScore(2, 1)">增加分數</button>
-        <button onclick="changeScore(2, -1)">減少分數</button>
-        <button onclick="resetScore(2)">重置分數</button>
+       <button id="whiteAdd" onclick="changeScore(2, 1)">增加分數</button>
+        <button id="whiteReduce" onclick="changeScore(2, -1)">減少分數</button>
+        <button id="whiteReset" onclick="resetScore(2)">重置分數</button>
     </div>
     </td>
     </Tr>
@@ -78,6 +78,7 @@
             1: 0,
             2: 0
         };
+          function myFunction(indicator) {
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const user = urlParams.get('User')
@@ -98,6 +99,7 @@
                 document.getElementById("whiteReduce").disabled = true;
                 document.getElementById("whiteReset").disabled = true;
             }
+        }
         function updateScore(group) {
             document.getElementById('score' + group).innerText = '分數: ' + scores[group];
         }
