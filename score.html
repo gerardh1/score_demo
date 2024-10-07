@@ -78,7 +78,26 @@
             1: 0,
             2: 0
         };
-
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const user = urlParams.get('User')
+            if (user=="admin"){
+                document.getElementById("redAdd").disabled = false;
+                document.getElementById("redReduce").disabled = false;
+                document.getElementById("redReset").disabled = false;
+                document.getElementById("whiteAdd").disabled = false;
+                document.getElementById("whiteReduce").disabled = false;
+                document.getElementById("whiteReset").disabled = false;
+            }
+            else
+            {
+                document.getElementById("redAdd").disabled = true;
+                document.getElementById("redReduce").disabled = true;
+                document.getElementById("redReset").disabled = true;
+                document.getElementById("whiteAdd").disabled = true;
+                document.getElementById("whiteReduce").disabled = true;
+                document.getElementById("whiteReset").disabled = true;
+            }
         function updateScore(group) {
             document.getElementById('score' + group).innerText = '分數: ' + scores[group];
         }
