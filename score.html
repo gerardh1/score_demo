@@ -82,6 +82,7 @@
             var queryString = window.location.search;
             var urlParams = new URL(queryString);
             var user = urlParams.searchParams.get('User')
+              console.log(user);
             if (user=="admin"){
                 document.getElementById("redAdd").disabled = false;
                 document.getElementById("redReduce").disabled = false;
