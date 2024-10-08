@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-sc \ale=1.0">
     <title>分組計分系統</title>
     <style>
         body {
@@ -25,37 +25,15 @@
         }
     </style>
 </head>
-<body onload="myFunction()" >
+<body >
     <div style="color:white"><h1>紅白大賽計分系統</h1></div>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    <div align="center">
-    <table>
+    <table align="center">
         <Tr>
             <td>
     <div class="group" style="background-color: red;">
         <h2>紅組</h2>
         <div id="score1">分數: 0</div>
-         <button id="redAdd" onclick="changeScore(1, 1)" >增加分數</button>
+        <button id="redAdd" onclick="changeScore(1, 1)" >增加分數</button>
         <button id="redReduce"onclick="changeScore(1, -1)">減少分數</button>
         <button id="redReset" onclick="resetScore(1)">重置分數</button>
     </div>
@@ -64,27 +42,30 @@
     <div class="group" style="background-color: white;">
         <h2>白組</h2>
         <div id="score2">分數: 0</div>
-       <button id="whiteAdd" onclick="changeScore(2, 1)">增加分數</button>
-        <button id="whiteReduce" onclick="changeScore(2, -1)">減少分數</button>
+        <button id="whiteAdd" onclick="changeScore(2, 1)">增加分數</button>
+        <button id="white" onclick="changeScore(2, -1)">減少分數</button>
         <button id="whiteReset" onclick="resetScore(2)">重置分數</button>
     </div>
     </td>
     </Tr>
     </table>
-    </div>
     <script>
+         fetch('/?User=admin')
+        .then(response => response.text())
+        .then(data => {
+            // Handle the response data
+            myFunction(data);
+        });
         // 用於儲存每組的分數
         const scores = {
             1: 0,
             2: 0
         };
-          function myFunction() {
-            var queryString =  window.location.href;
-              console.log(queryString);
+        function myFunction(indicator) {
+            var queryString = window.location.search;
             var urlParams = new URL(queryString);
-             console.log(urlParams);
             var user = urlParams.searchParams.get('User')
-              console.log(user);
+    
             if (user=="admin"){
                 document.getElementById("redAdd").disabled = false;
                 document.getElementById("redReduce").disabled = false;
