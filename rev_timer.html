@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒數計時器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('lunch.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin-top: 50px;
+        }
+        #timer {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">剩餘時間: 03:00</div>
+    <button onclick="startCountdown()">開始倒數</button>
+    <button onclick="stopCountdown()">停止倒數</button>
+
+    <script>
+        let totalSeconds = 180; // 3分鐘
+        let timer;
+        
+        function startCountdown() {
+            // 如果計時器已經在運行，則不重複啟動
+            if (timer) return;
+
+            timer = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(timer);
+                    timer = null;
+                    alert("時間到！");
+                    return;
+                }
+
+                totalSeconds--;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function stopCountdown() {
+            clearInterval(timer);
+            timer = null; // 重置計時器變數
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            document.getElementById('timer').innerText = `剩餘時間: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
