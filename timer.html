@@ -22,10 +22,15 @@
     </style>
 </head>
 <body>
-    <div style="background-color: transparent;width: 600px;">
-        <div id="timer" style="font-size: 100px;">經過 0 秒</div>
+    <div style="background-color: transparent;width: 700px;">
+        <div id="timer" style="font-size: 100px;color:red">紅組經過 0 秒</div>
         <button onclick="startTimer()">開始計時</button>
         <button onclick="stopTimer()">停止計時</button>
+    </div>
+    <div style="background-color: transparent;width: 700px;">
+        <div id="timerW" style="font-size: 100px;color:white">白組經過 0 秒</div>
+        <button onclick="startTimerW()">開始計時</button>
+        <button onclick="stopTimerW()">停止計時</button>
     </div>
     <script>
         let seconds = 0;
@@ -37,13 +42,30 @@
 
             timer = setInterval(() => {
                 seconds++;
-                document.getElementById('timer').innerText = `經過 ${seconds} 秒`;
+                document.getElementById('timer').innerText = `紅組經過 ${seconds} 秒`;
             }, 1000);
         }
 
         function stopTimer() {
             clearInterval(timer);
             timer = null; // 重置計時器變數
+        }
+
+        let secondsW = 0;
+        let timerW;
+        function startTimerW() {
+            // 如果計時器已經在運行，則不重複啟動
+            if (timerW) return;
+
+            timerW = setInterval(() => {
+                secondsW++;
+                document.getElementById('timerW').innerText = `白組經過 ${secondsW} 秒`;
+            }, 1000);
+        }
+
+        function stopTimerW() {
+            clearInterval(timerW);
+            timerW = null; // 重置計時器變數
         }
     </script>
 </body>
