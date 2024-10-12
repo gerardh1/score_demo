@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計時器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('lunch.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin-top: 50px;
+        }
+        #timer {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: transparent;width: 600px;">
+        <div id="timer" style="font-size: 100px;">經過 0 秒</div>
+        <button onclick="startTimer()">開始計時</button>
+        <button onclick="stopTimer()">停止計時</button>
+    </div>
+    <script>
+        let seconds = 0;
+        let timer;
+
+        function startTimer() {
+            // 如果計時器已經在運行，則不重複啟動
+            if (timer) return;
+
+            timer = setInterval(() => {
+                seconds++;
+                document.getElementById('timer').innerText = `經過 ${seconds} 秒`;
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            timer = null; // 重置計時器變數
+        }
+    </script>
+</body>
+</html>
